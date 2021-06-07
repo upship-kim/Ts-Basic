@@ -1,5 +1,4 @@
-
-//변수의 타입 지정 방식
+//(기본)변수의 타입 지정 방식
 let count = 0; //숫자
 
 const message:string = 'hello world';  ///문자열
@@ -34,3 +33,78 @@ const funRed = () =>{
     return 'red';
 }
 let color5: 'red' | 'orange' | 'black' = funRed();  // 에러 // 타입이 한정된 문자열(red, orange,black )일때 같은 값을 반환하는 함수 입력 불가 
+
+
+
+
+///////////////////////
+
+//(기본)함수 타입 지정 방식
+
+function sum(x: number, y: number) : number{
+    return x + y; 
+}
+
+//(x: number, y: number) 는 파라미터인 x 와 y 가 number 값임을 뜻함
+//function sum() : number {} 는 함수의 결과 값이 number 임을 뜻함 
+
+sum(1,2); 
+sum(); //결과값이 number라는 것을 위에서 명시했기에 null이 반환하게 코드를 작성하면 에러가 뜸 
+sum('1',2); //문자열을 파라미터로 입력하자 에러 
+
+
+function sumArray (numbers: number[]) : number{
+    return numbers.reduce((acc, current) => acc + current, 0);
+} 
+
+const total1 = sumArray([1,2,3,4,5]); //파라미터 값을 숫자인 배열로 넣었을때 
+const total2 = sumArray(1,2,3,4,5);     //에러 // 파라미터 타입이 숫자인 배열이므로 에러 처리됨 
+
+
+//만약 함수에서 아무것도 반환하지 않아야 한다면 반환타입을 void로 지정
+function retrunNothing (): void {
+    console.log('return Nothing')
+}
+
+
+//일반 객체를 interface로 타입 설정해보기 
+
+interface Person {
+    name: string,
+    age?: number;   //물음표는 해당 변수를 설정해도 되고 안해도 되고 라는 뜻
+}
+
+interface Developer {
+    name : string,
+    age?:number,
+    skills : string[]; 
+}
+
+//변수에 적용하기 
+const person : Person = {
+    name: '김상배',
+    age: 32
+}
+
+const person2 : Person = {
+    name: '김상배',
+    //age 가 없어도 가능 ( 위에서 물음표를 사용하여 처리하였기 때문에)
+}
+const person3 : Person = {
+    //name이 없을 경우에 에러 발생
+    age:32
+}
+const person4 : Person = {
+    name:'김상배',
+    age:32,
+    skill:'react'   //인터페이스 내 지정하지 않은 타입이 있을 경우 에러 처리 
+}
+
+const expert : Developer = {
+    name:'김상배',
+    skills:["java", "react"]
+}
+
+
+expert.skills.push('oracle'); 
+expert.skills.push(['oracle']);     //에러 처리 됨 // 타입이 string으로 이뤄진 배열이기 때문에 
