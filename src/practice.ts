@@ -188,3 +188,28 @@ function wrap<T>(param:T){
 }
 
 const wraped = wrap(10); 
+
+
+
+
+//interface 에서 Generics 사용하기 
+
+interface Items<T>{
+    list:T[]; 
+}
+
+const items: Items<string> = {
+    list:['1','2','3']
+    
+}
+
+
+
+//Type alias 에서 Generics 사용하기 
+type ItemsType<T> = {
+    list: T[]
+} 
+
+const itemsType: ItemsType<string>={
+    list: ['1','r','3']
+}
