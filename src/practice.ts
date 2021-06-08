@@ -141,3 +141,10 @@ type newType = PersonType[];
 const newPeople: newType = 
     // [{name:'dd'},{name:'sss'}]
     [person5, person6]; 
+
+
+
+type Color = 'red'|'blue'|'orange';
+const color: Color = 'red';
+const ArrayColor: Color[] = ['red','blue']; 
+
