@@ -213,3 +213,6 @@ type ItemsType<T> = {
 const itemsType: ItemsType<string>={
     list: ['1','r','3']
 }
+
+
+//클래스 에서 제네릭 사용하기 
