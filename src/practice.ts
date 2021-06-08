@@ -148,3 +148,43 @@ type Color = 'red'|'blue'|'orange';
 const color: Color = 'red';
 const ArrayColor: Color[] = ['red','blue']; 
 
+
+
+
+//제네릭 타입 사용하기 
+
+//제네릭 예제 1. 
+//객체 A와 객체 B를 합쳐주는 merge라는 함수를 만든다고 가정, 
+// 이런 상황에서 A와 B는 어떤 타입이 올지 모르기 때문에 any라는 타입을 쓸수도 있지만 
+//  이러면 타입추론이 모두 깨진것과 다름 없음( 결과가 any라는 것은 merged 안에 무엇이 있는지 알수 없다는 것 !!)
+
+
+//any의 예 (타입추론이 깨진 예)
+function mergeAny (a: any, b:any){
+    return{
+        ...a,
+        ...b
+    }
+} 
+
+const merged = mergeAny({'foo':1},{'qoo':2});
+
+
+//제네릭 사용1. (타입추론을 지킨 예)
+function mergeGene<A,B> (a: A,b: B){
+    return{
+        ...a,
+        ...b
+    }
+}
+
+const mergedGeneric = mergeGene({foo:1},{boo:'2'}); 
+
+
+
+//제네릭 사용 2.
+function wrap<T>(param:T){
+    return param; 
+}
+
+const wraped = wrap(10); 
