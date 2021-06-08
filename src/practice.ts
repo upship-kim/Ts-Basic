@@ -111,3 +111,33 @@ const people: Person[] = [person, expert];  // Person은 Developer 인터페이�
 
 expert.skills.push('oracle'); 
 expert.skills.push(['oracle']);     //에러 처리 됨 // 타입이 string으로 이뤄진 배열이기 때문에 
+
+
+
+//Type Alias 사용하기 
+//: type은 특정 타입에 별칭을 붙이는 용도로 사용한다. 이를 사용하여 객체를 위한 타입을 설정할 수도 있고
+// 배열 또는 그 어떤 타입이든 별칭을 지어줄 수 있다. (즉, 타입을 직접 커스텀하여 사용)
+
+type PersonType ={  //PersonAlias 라는 type을 정해줌 
+    name : string,
+    age?: number; 
+}
+
+type DeveloperType = PersonType & {
+    skills: string[]
+}
+
+const person5: PersonType = {
+    name:'type',
+}
+
+const person6 : DeveloperType = {
+    name:'type & ',
+    skills:['도저히','헷갈린다']
+}
+
+//기존 타입을 이용하여 새로운 타입 만들기 
+type newType = PersonType[]; 
+const newPeople: newType = 
+    // [{name:'dd'},{name:'sss'}]
+    [person5, person6]; 
