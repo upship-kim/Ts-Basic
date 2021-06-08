@@ -74,9 +74,7 @@ interface Person {
     age?: number;   //물음표는 해당 변수를 설정해도 되고 안해도 되고 라는 뜻
 }
 
-interface Developer {
-    name : string,
-    age?:number,
+interface Developer extends Person {
     skills : string[]; 
 }
 
@@ -90,20 +88,25 @@ const person2 : Person = {
     name: '김상배',
     //age 가 없어도 가능 ( 위에서 물음표를 사용하여 처리하였기 때문에)
 }
-const person3 : Person = {
-    //name이 없을 경우에 에러 발생
+const person3 : Person = {    // 에러 // name이 없을 경우에 에러 발생
     age:32
 }
 const person4 : Person = {
     name:'김상배',
     age:32,
-    skill:'react'   //인터페이스 내 지정하지 않은 타입이 있을 경우 에러 처리 
+    skill:'react'   //에러 // 인터페이스 내 지정하지 않은 타입이 있을 경우 에러 처리 
 }
 
 const expert : Developer = {
     name:'김상배',
     skills:["java", "react"]
 }
+
+const people: Person[] = [person, expert];  // Person은 Developer 인터페이스의 부모이기도 함으로 중복된다 
+
+
+
+
 
 
 expert.skills.push('oracle'); 
