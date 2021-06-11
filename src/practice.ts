@@ -213,6 +213,8 @@ type ItemsType<T> = {
 const itemsType: ItemsType<string>={
     list: ['1','r','3']
 }
+const itemsTypeError: ItemsType<string>={
+    list: [1, true, null, '3']   //에러 //제네릭 타입과 다르기 때문 
+}
 
 
-//클래스 에서 제네릭 사용하기 
